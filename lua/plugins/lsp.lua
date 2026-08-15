@@ -114,6 +114,18 @@ return {
         end,
       })
 
+      vim.lsp.config('nixd', {
+        cmd = { "nixd" },
+        root_markers = { "flake.nix", ".git" },
+        settings = {
+          nixd = {
+            formatting = {
+              command = { "alejandra" },
+            },
+          },
+        },
+      })
+
       vim.lsp.config('rust_analyzer', {
         settings = {
           ['rust-analyzer'] = {
@@ -185,7 +197,9 @@ return {
         },
       })
 
-      vim.lsp.enable({ 'lua_ls', 'clangd', 'pyright', 'rust_analyzer' })
+      -- html/cssls/jsonls come from vscode-langservers-extracted (see flake.nix);
+      -- default configs from nvim-lspconfig are used as-is.
+      vim.lsp.enable({ 'lua_ls', 'clangd', 'pyright', 'rust_analyzer', 'nixd', 'html', 'cssls', 'jsonls' })
     end,
   },
 }

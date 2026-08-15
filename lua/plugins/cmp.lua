@@ -8,6 +8,7 @@ return {
             "hrsh7th/cmp-path",
             "petertriho/cmp-git",
             "hrsh7th/cmp-calc",
+            "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-cmdline",
             "saadparwaiz1/cmp_luasnip",
             --"zbirenbaum/copilot-cmp",
@@ -92,9 +93,10 @@ return {
                 },
             })
 
+            require('cmp_git').setup()
             cmp.setup.filetype('gitcommit', {
                 sources = cmp.config.sources({
-                    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+                    { name = 'git' },
                 }, {
                     { name = 'buffer' },
                 })

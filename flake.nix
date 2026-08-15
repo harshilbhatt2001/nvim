@@ -62,6 +62,7 @@
       "cmp-path" = vp.cmp-path;
       "cmp-git" = vp.cmp-git;
       "cmp-calc" = vp.cmp-calc;
+      "cmp-nvim-lua" = vp.cmp-nvim-lua;
       "cmp-cmdline" = vp.cmp-cmdline;
       "cmp_luasnip" = vp.cmp_luasnip;
       "LuaSnip" = vp.luasnip;
@@ -116,9 +117,10 @@
         black
         alejandra
         rustfmt
-        python313Packages.python-lsp-server
+        pyright
         stylua
         nixd
+        clang-tools
 
         # other tools
         tree-sitter
