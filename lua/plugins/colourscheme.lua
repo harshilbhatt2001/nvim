@@ -52,7 +52,19 @@ return {
         transparent_mode = false, -- NO transparency
         dim_inactive = false,
       })
-      vim.cmd("colorscheme gruvbox")
+    --vim.cmd("colorscheme gruvbox")
+    end,
+  },
+
+  -- Tomorrow Night (active colorscheme)
+  {
+    "paul-han-gh/tomorrow.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function(_, opts)
+      require("tomorrow").setup(opts)
+      vim.cmd([[colorscheme tomorrow-night]])
     end,
   },
 }

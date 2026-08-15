@@ -35,25 +35,25 @@ return {
           vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
             vim.lsp.buf.format()
           end, { desc = 'Format current buffer with LSP' })
+
         end,
       })
 
-      local sign = function(opts)
-        vim.fn.sign_define(opts.name, {
-          texthl = opts.name,
-          text = opts.text,
-          numhl = ''
-        })
-      end
-
-      sign({ name = 'DiagnosticSignError', text = '' })
-      sign({ name = 'DiagnosticSignWarn', text = '' })
-      sign({ name = 'DiagnosticSignHint', text = '' })
-      sign({ name = 'DiagnosticSignInfo', text = '' })
+      -- Toggle inlay hints for the current buffer (works in any LSP-attached buffer)
+      vim.keymap.set('n', '<leader>th', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+      end, { desc = '[T]oggle Inlay [H]ints' })
 
       vim.diagnostic.config({
         virtual_text = false,
-        signs = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN]  = '',
+            [vim.diagnostic.severity.HINT]  = '',
+            [vim.diagnostic.severity.INFO]  = '',
+          },
+        },
         update_in_insert = true,
         underline = true,
         severity_sort = false,
@@ -98,7 +98,6 @@ return {
       vim.lsp.config('clangd', {
         cmd = {
           "clangd",
-          "--compile-commands-dir=build",
           "--background-index",
           "--clang-tidy",
           "--completion-style=detailed",

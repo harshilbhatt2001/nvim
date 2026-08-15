@@ -18,6 +18,7 @@ map('n', '<leader>sh', function() require('telescope.builtin').help_tags() end, 
 map('n', '<leader>sw', function() require('telescope.builtin').grep_string() end, '[S]earch current [W]ord')
 map('n', '<leader>sg', function() require('telescope.builtin').live_grep() end, '[S]earch by [G]rep')
 map('n', '<leader>sd', function() require('telescope.builtin').diagnostics() end, '[S]earch [D]iagnostics')
+map('n', '<leader>sk', function() require('telescope.builtin').keymaps() end, '[S]earch [K]eymaps')
 
 map({ 'n', 't' }, '<A-t>', function() require("FTerm").toggle() end, 'Toggle Terminal')
 
