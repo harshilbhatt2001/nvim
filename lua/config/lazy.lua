@@ -33,6 +33,10 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   -- don't just notify about updates; we update automatically on launch below
   checker = { enabled = false },
+  -- Under the nix wrapper the config is dofile'd from the store, which is not
+  -- stdpath("config"), so lazy's default rtp reset drops it and every
+  -- require("config.*") after setup fails.
+  performance = { rtp = { reset = false } },
 })
 
 -- Automatically update plugins on launch and notify once it finishes.
