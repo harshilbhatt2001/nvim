@@ -4,6 +4,8 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-ui-select.nvim',
+      -- nix provides this prebuilt; `make` only runs on non-nix checkouts
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     config = function()
       require('telescope').setup {
