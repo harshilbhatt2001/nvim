@@ -35,24 +35,7 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "tomorrow-nvim": "tomorrow-nvim",
         "wrappers": "wrappers"
-      }
-    },
-    "tomorrow-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754942665,
-        "narHash": "sha256-AIFCm5s8vRte8AGYbi1qmnzpb/HKUmV3YJRc7ijWmMo=",
-        "owner": "paul-han-gh",
-        "repo": "tomorrow.nvim",
-        "rev": "1f21b13a0f8040f650c0b98f38b07364c20dfc86",
-        "type": "github"
-      },
-      "original": {
-        "owner": "paul-han-gh",
-        "repo": "tomorrow.nvim",
-        "type": "github"
       }
     },
     "wrappers": {
