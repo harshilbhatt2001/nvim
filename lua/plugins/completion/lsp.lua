@@ -1,6 +1,5 @@
 vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig", name = "nvim-lspconfig" },
-	{ src = "https://github.com/folke/neodev.nvim", name = "neodev" },
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -63,12 +62,15 @@ vim.diagnostic.config({
   },
 })
 
-require('neodev').setup({
-  override = function(root_dir, library)
-    if root_dir:find("/home/harshil/.dotfiles", 1, true) == 1 then
-      library.enabled = true
-      library.plugins = true
-    end
+-- Lazy-load lazydev (neodev successor) only when editing lua
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "lua",
+  once = true,
+  callback = function()
+    vim.pack.add({
+      { src = "https://github.com/folke/lazydev.nvim", name = "lazydev" },
+    })
+    require("lazydev").setup()
   end,
 })
 

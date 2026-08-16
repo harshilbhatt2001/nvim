@@ -52,6 +52,12 @@ vim.opt.cursorline = true
 -- Local project config
 vim.o.exrc = true
 
+-- Undotree (bundled with nvim 0.12), pairs with undofile above
+vim.cmd("packadd nvim.undotree")
+vim.keymap.set("n", "<leader>u", function()
+	require("undotree").open()
+end, { desc = "Undotree" })
+
 require("plugins.init")
 require("config.autocmd")
 require("config.binds")

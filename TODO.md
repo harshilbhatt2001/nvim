@@ -13,24 +13,24 @@
 - [x] conform.nvim + nvim-lint — per-filetype format on save
       (prettier/stylua/black/alejandra/rustfmt are already in runtimePkgs,
       mostly unused); replaces the bare `vim.lsp.buf.format()` autocmd
-- [ ] lualine — no statusline plugin at all right now (macro-recording
+- [x] lualine — no statusline plugin at all right now (macro-recording
       indicator, lsp_status, branch/diff sections from the reference)
 
 ## Editing power
 
-- [ ] mini.pairs — no autopairs at all currently
-- [ ] mini.surround
-- [ ] mini.ai — around/in textobjects
-- [ ] flash.nvim — in-file jumps (`ss` fuzzy, `S` treesitter);
+- [x] mini.pairs — no autopairs at all currently
+- [x] mini.surround
+- [x] mini.ai — around/in textobjects
+- [x] flash.nvim — in-file jumps (`ss` fuzzy, `S` treesitter);
       keep our binds where they collide
-- [ ] undotree UI (`packadd nvim.undotree`, `<leader>u`) — pairs with undofile
+- [x] undotree UI (`packadd nvim.undotree`, `<leader>u`) — pairs with undofile
 
 ## Sessions & convenience
 
-- [ ] mini.sessions — autoread/autowrite `.session`, save-and-quit bind
-- [ ] remember.nvim — reopen files at last cursor position
-- [ ] auto-save.nvim — watch interaction with format-on-save ordering
-- [ ] scrollEOF.nvim — scrolloff keeps working at EOF
+- [x] mini.sessions — autoread/autowrite `.session`, save-and-quit bind
+- [x] remember.nvim — reopen files at last cursor position
+- [x] auto-save.nvim — watch interaction with format-on-save ordering
+- [x] scrollEOF.nvim — scrolloff keeps working at EOF
 
 ## Small QoL (cheap, copy from reference)
 
@@ -48,7 +48,7 @@
 
 ## Maintenance (not from reference, but do while here)
 
-- [ ] Replace deprecated neodev.nvim with lazydev.nvim
+- [x] Replace deprecated neodev.nvim with lazydev.nvim
 
 ## Deliberately NOT adopting
 
