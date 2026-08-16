@@ -13,7 +13,7 @@ require("rose-pine").setup({
 	styles = {
 		bold = true,
 		italic = true,
-		transparency = false, -- NO transparency
+		transparency = true,
 	},
 	highlight_groups = {
 		Normal = { bg = nil },
@@ -40,9 +40,15 @@ require("gruvbox").setup({
 	invert_intend_guides = false,
 	inverse = true,
 	contrast = "hard",
-	transparent_mode = false, -- NO transparency
+	transparent_mode = true,
 	dim_inactive = false,
 })
 
 -- Tomorrow Night (active colourscheme, applied in init.lua)
-require("tomorrow").setup({})
+require("tomorrow").setup({
+	transparent = true,
+	styles = {
+		sidebars = "transparent",
+		floats = "transparent",
+	},
+})

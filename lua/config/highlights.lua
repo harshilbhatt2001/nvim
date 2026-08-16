@@ -33,11 +33,8 @@ local function add_style(group, style)
 end
 
 local function apply_highlights()
-  -- NO transparency: leave Normal / NormalFloat backgrounds to the active theme.
-  -- To make the background transparent instead, add:
-  --   vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-  --   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-
+  -- The theme's Normal bg is read BEFORE the transparency pass below clears
+  -- it — comment dimming still blends toward the theme's intended background.
   local normal  = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
   local comment = vim.api.nvim_get_hl(0, { name = "Comment", link = false })
   local orig_fg = comment.fg -- capture BEFORE we dim Comment
@@ -65,6 +62,13 @@ local function apply_highlights()
   add_style("@function", { bold = true })
   add_style("@type",     { bold = true })
   add_style("@constant", { bold = true })
+
+  -- Transparent by default: stop painting backgrounds so the terminal's own
+  -- translucency shows through, whatever the active theme. add_style merges,
+  -- so each group keeps its fg.
+  for _, group in ipairs({ "Normal", "NormalNC", "NormalFloat", "SignColumn" }) do
+    add_style(group, { bg = "NONE" })
+  end
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
