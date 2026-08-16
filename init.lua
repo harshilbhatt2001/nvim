@@ -14,17 +14,23 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
--- Undo / swap
+-- Undo / swap: no swap or backup, but keep undo history across sessions
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.fn.mkdir(vim.opt.undodir:get()[1], "p")
+vim.opt.undofile = true
 
 -- Search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+-- Keep the cursor vertically centered-ish: half the screen, not a fixed 8
+vim.opt.scrolloff = math.floor(vim.o.lines / 2) - 3
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -36,6 +42,15 @@ vim.opt.colorcolumn = "120"
 
 vim.opt.spell = true
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
+
+-- Windows
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.o.winborder = "rounded"
+vim.opt.cursorline = true
+
+-- Local project config
+vim.o.exrc = true
 
 require("plugins.init")
 require("config.autocmd")

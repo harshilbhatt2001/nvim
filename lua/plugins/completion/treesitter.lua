@@ -15,6 +15,8 @@ require("nvim-treesitter").install({
 	"bash",
 	"vim",
 	"vimdoc",
+	-- noice.nvim needs these for cmdline/message highlighting
+	"regex",
 })
 
 -- Enable treesitter highlighting + indentation for any buffer that has

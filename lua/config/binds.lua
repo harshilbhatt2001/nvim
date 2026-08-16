@@ -45,3 +45,33 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Insert on a blank line starts at the right indent
+for _, bind in ipairs({ "i", "a", "A", "I" }) do
+    vim.keymap.set("n", bind, function()
+        if vim.fn.getline("."):match("^%s*$") then
+            return [["_cc]]
+        else
+            return bind
+        end
+    end, { expr = true })
+end
+
+-- Tab binds
+map('n', '<C-t>l', function() vim.cmd("tabnext") end, "Next Tab")
+map('n', '<C-t>h', function() vim.cmd("tabprevious") end, "Previous Tab")
+map('n', '<C-t>j', function() vim.cmd("tabnew") end, "New Tab")
+map('n', '<C-t>q', function() vim.cmd("tabclose") end, "Close Tab")
+
+-- Terminal binds
+map('n', '<leader>tj', function() -- terminal in a split
+    vim.cmd.vnew()
+    vim.cmd.term()
+    vim.cmd.startinsert()
+end, "Terminal in Split")
+map('n', '<leader>tk', function() -- terminal in a new tab
+    vim.cmd.tabnew()
+    vim.cmd.term()
+    vim.cmd.startinsert()
+end, "Terminal in Tab")
+map('t', '<C-d>', "<C-\\><C-n>", "Escape Terminal")
