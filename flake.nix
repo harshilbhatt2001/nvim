@@ -42,6 +42,7 @@
         clang-tools
 
         # other tools
+        wl-clipboard # nvim's Wayland clipboard provider (wl-copy / wl-paste)
         tree-sitter
         ripgrep
         gcc
@@ -52,6 +53,7 @@
       ]);
 
       minimal = mkNvim pkgs (with pkgs; [
+        wl-clipboard
         ripgrep
         fzf
         gcc
