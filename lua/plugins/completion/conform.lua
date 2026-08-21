@@ -1,6 +1,5 @@
 vim.pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim", name = "conform" },
-	{ src = "https://github.com/mfussenegger/nvim-lint", name = "nvim-lint" },
 })
 
 -- All formatter binaries come from the flake's runtimePkgs.
@@ -25,16 +24,4 @@ require("conform").setup({
 		timeout_ms = 1000,
 	},
 	undojoin = true,
-})
-
-local lint = require("lint")
-
--- Auto-run the linter only for filetypes that have one configured
-vim.api.nvim_create_autocmd("BufWritePost", {
-	callback = function()
-		local ft = vim.bo.filetype
-		if lint.linters_by_ft[ft] then
-			lint.try_lint()
-		end
-	end,
 })

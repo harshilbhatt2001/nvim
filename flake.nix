@@ -45,6 +45,7 @@
         wl-clipboard # nvim's Wayland clipboard provider (wl-copy / wl-paste)
         tree-sitter
         ripgrep
+        fd # telescope's file finder
         gcc
         cargo
         fzf
