@@ -44,7 +44,7 @@ require("gruvbox").setup({
 	dim_inactive = false,
 })
 
--- Tomorrow Night (active colourscheme, applied in init.lua)
+-- Tomorrow Night (the default colourscheme; init.lua picks via NVIM_COLORSCHEME)
 require("tomorrow").setup({
 	transparent = true,
 	styles = {

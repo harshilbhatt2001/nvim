@@ -61,4 +61,21 @@ require("config.autocmd")
 require("config.binds")
 require("config.highlights")
 
-vim.cmd.colorscheme("tomorrow-night")
+-- Colourscheme. NVIM_COLORSCHEME selects one of the schemes set up in
+-- lua/plugins/ui/colourscheme.lua (tomorrow-night, rose-pine, rose-pine-moon,
+-- rose-pine-dawn, gruvbox); a project's devenv.nix sets it with
+-- `env.NVIM_COLORSCHEME = "gruvbox";`. Unset or unknown falls back to
+-- tomorrow-night, with a warning for the unknown case.
+local DEFAULT_COLORSCHEME = "tomorrow-night"
+local scheme = vim.env.NVIM_COLORSCHEME
+if scheme == nil or scheme == "" then
+	vim.cmd.colorscheme(DEFAULT_COLORSCHEME)
+elseif not pcall(vim.cmd.colorscheme, scheme) then
+	vim.cmd.colorscheme(DEFAULT_COLORSCHEME)
+	vim.schedule(function()
+		vim.notify(
+			("NVIM_COLORSCHEME=%s is not an installed colourscheme, using %s"):format(scheme, DEFAULT_COLORSCHEME),
+			vim.log.levels.WARN
+		)
+	end)
+end
